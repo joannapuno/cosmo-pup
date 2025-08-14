@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import CosmoPup1 from "../assets/Cosmo-pup-1.png";
-import CosmoPup2 from "../assets/Cosmo-pup-2.png";
+import CosmoPup1 from "../assets/cosmo-pup-1.png";
+import CosmoPup2 from "../assets/cosmo-pup-2.png";
 import { useEffect, useState } from "react";
 
 interface Props {
