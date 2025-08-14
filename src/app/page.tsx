@@ -1,6 +1,6 @@
 "use client";
 
-import { Launch } from "@/queries/types";
+import { Launch } from "@/types";
 import LaunchesList from "@/components/LaunchesList";
 import { useEffect, useState } from "react";
 import CountdownPanel from "@/components/CountdownPanel";

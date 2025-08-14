@@ -1,25 +1,32 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faSort } from '@fortawesome/free-solid-svg-icons';
-import { FilterBy, Launch, SortDirection } from '@/queries/types';
-import FilterControls from './FilterControls';
-import { useLaunches } from '@/hooks/useLaunches';
-import { useFilters } from '@/hooks/useFilters';
-import { capitalize, formatLaunchDate } from '@/utils';
-import FilterDropdown from './FilterDropdown';
-import { DEFAULT_SORT_KEY, HEADERS } from '@/constants';
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faSort,
+} from "@fortawesome/free-solid-svg-icons";
+import { FilterBy, Launch, SortDirection } from "@/types";
+import FilterControls from "./FilterControls";
+import { useLaunches } from "@/hooks/useLaunches";
+import { useFilters } from "@/hooks/useFilters";
+import { capitalize, formatLaunchDate } from "@/utils";
+import FilterDropdown from "./FilterDropdown";
+import { DEFAULT_SORT_KEY, HEADERS } from "@/constants";
 
 interface Props {
   onSelectLaunch: (selected: Launch) => void;
   selectedLaunch?: Launch | null;
 }
 
-export default function LaunchesList({ selectedLaunch, onSelectLaunch }: Props) {
+export default function LaunchesList({
+  selectedLaunch,
+  onSelectLaunch,
+}: Props) {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [sortBy, setSortBy] = useState<FilterBy>(DEFAULT_SORT_KEY);
-  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [pageSize, setPageSize] = useState<number>(5);
 
   const {
@@ -49,16 +56,16 @@ export default function LaunchesList({ selectedLaunch, onSelectLaunch }: Props) 
     setCurrentPage(0);
   }, [sortBy, sortDirection, appliedFilterBy, appliedFilterValue]);
 
-  const handleSortBy = (key: FilterBy | '') => {
-    setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+  const handleSortBy = (key: FilterBy | "") => {
+    setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
     setSortBy(key);
   };
 
   const getColumnVal = (launch: Launch, key: string) => {
-    if (key === 'launchDate') {
+    if (key === "launchDate") {
       return formatLaunchDate(launch.launchDate);
     }
-    const header = String(launch[key as keyof Launch] ?? '');
+    const header = String(launch[key as keyof Launch] ?? "");
     return capitalize(header);
   };
 
@@ -70,7 +77,7 @@ export default function LaunchesList({ selectedLaunch, onSelectLaunch }: Props) 
         filterValue={filterValue}
         onFilterByChange={(val) => {
           setFilterBy(val);
-          setFilterValue('');
+          setFilterValue("");
         }}
         onFilterValChange={setFilterValue}
         onClearFilters={clearFilters}
@@ -85,7 +92,7 @@ export default function LaunchesList({ selectedLaunch, onSelectLaunch }: Props) 
                 <th key={key} className="whitespace-nowrap text-left py-4 px-4">
                   <div className="flex gap-2 items-center">
                     <span>{name}</span>
-                    <button onClick={() => handleSortBy(key as FilterBy | '')}>
+                    <button onClick={() => handleSortBy(key as FilterBy | "")}>
                       <FontAwesomeIcon icon={faSort} fontSize="0.75rem" />
                     </button>
                   </div>
@@ -100,7 +107,7 @@ export default function LaunchesList({ selectedLaunch, onSelectLaunch }: Props) 
                 key={launch.slug}
                 onClick={() => onSelectLaunch(launch)}
                 className={`hover:bg-[#e3b9d14f] cursor-pointer ${
-                  selectedLaunch?.slug === launch.slug ? 'bg-[#e3b9d14f]' : ''
+                  selectedLaunch?.slug === launch.slug ? "bg-[#e3b9d14f]" : ""
                 }`}
               >
                 {HEADERS.map((header) => (
@@ -120,9 +127,9 @@ export default function LaunchesList({ selectedLaunch, onSelectLaunch }: Props) 
             name="fd-pages-shown"
             selected={pageSize}
             options={[
-              { name: '5', value: 5 },
-              { name: '10', value: 10 },
-              { name: '15', value: 15 },
+              { name: "5", value: 5 },
+              { name: "10", value: 10 },
+              { name: "15", value: 15 },
             ]}
             onChange={(val) => setPageSize(Number(val))}
           />

@@ -11,9 +11,9 @@ interface Props {
 }
 
 const messages: string[] = [
-  "Welcome to the Launch Center!",
-  "Our launch control center is the place to be if you want to witness the most epic rocket launches in the galaxy...",
-  "So come on down to the Launch Center and experience the thrill of a lifetime!",
+  "Welcome to the Bark Command Center!",
+  "Our paw-some control room is the place to be if you want to witness the most tail-wagging rocket launches in the galaxy...",
+  "So grab your leash and trot on down to the Bark Command Center for the ulti-mutt launch experience!",
 ];
 
 export default function LaunchControlModal({ isOpen, onClose }: Props) {

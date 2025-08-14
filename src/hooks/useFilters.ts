@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getLaunches } from "@/queries/get-launches"
-import { FilterBy, Launch, Option } from "@/queries/types"
+import { FilterBy, Launch, Option } from "@/types"
 import { capitalize } from "@/utils"
 
 export function useFilters() {

@@ -1,5 +1,5 @@
 import { getLaunches } from "@/queries/get-launches";
-import { Launch } from "@/queries/types";
+import { Launch } from "@/types";
 import { useEffect, useState } from "react";
 
 export const useUpcomingLaunch = (() => {

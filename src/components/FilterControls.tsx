@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { FilterBy, Option } from '@/queries/types';
-import FilterDropdown from './FilterDropdown';
-import DatePicker from './DatePicker';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
-import { FILTER_BY_OPTIONS } from '@/constants';
+import { FilterBy, Option } from "@/types";
+import FilterDropdown from "./FilterDropdown";
+import DatePicker from "./DatePicker";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { FILTER_BY_OPTIONS } from "@/constants";
 
 interface Props {
   options: Option[];
   filterBy: FilterBy;
   filterValue: string;
-  onFilterByChange: (val: FilterBy | '') => void;
+  onFilterByChange: (val: FilterBy | "") => void;
   onFilterValChange: (val: string) => void;
   onClearFilters: () => void;
   onApplyFilters: () => void;
@@ -36,7 +36,7 @@ export default function FilterControls({
   // Notes: Will be better to be able to add multiple filterBy instead of 1
   const renderFilterInput = () => {
     switch (filterBy) {
-      case 'rocketType':
+      case "rocketType":
         return (
           <FilterDropdown
             id="fd-type"
@@ -45,7 +45,7 @@ export default function FilterControls({
             {...sharedProps}
           />
         );
-      case 'organization':
+      case "organization":
         return (
           <FilterDropdown
             id="fd-organization"
@@ -54,7 +54,7 @@ export default function FilterControls({
             {...sharedProps}
           />
         );
-      case 'launchDate':
+      case "launchDate":
         // Note: Would be better to use a date range picker here instead
         return (
           <DatePicker
@@ -65,7 +65,12 @@ export default function FilterControls({
         );
       default:
         return (
-          <FilterDropdown id="fd-name" name="fd-name" label="Name" {...sharedProps} />
+          <FilterDropdown
+            id="fd-name"
+            name="fd-name"
+            label="Name"
+            {...sharedProps}
+          />
         );
     }
   };
@@ -80,7 +85,7 @@ export default function FilterControls({
           label="Filter By"
           options={FILTER_BY_OPTIONS}
           selected={filterBy}
-          onChange={(val) => onFilterByChange(val as FilterBy | '')}
+          onChange={(val) => onFilterByChange(val as FilterBy | "")}
         />
       </div>
 

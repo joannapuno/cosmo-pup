@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { Launch } from '@/queries/types';
-import { useCountDown } from '@/hooks/useCountDown';
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Launch } from "@/types";
+import { useCountDown } from "@/hooks/useCountDown";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowsUpDownLeftRight,
   faRocket,
   faUserGroup,
-} from '@fortawesome/free-solid-svg-icons';
-import { capitalize, padZero } from '@/utils';
+} from "@fortawesome/free-solid-svg-icons";
+import { capitalize, padZero } from "@/utils";
 
 interface Props {
   onTimerDone: () => void;
@@ -17,18 +17,18 @@ interface Props {
 }
 
 export default function CountdownPanel({ selectedLaunch, onTimerDone }: Props) {
-  const launchDate = selectedLaunch?.launchDate ?? '';
-  const [finalMessage, setFinalMessage] = useState<string>('');
+  const launchDate = selectedLaunch?.launchDate ?? "";
+  const [finalMessage, setFinalMessage] = useState<string>("");
   const { days, hours, minutes, seconds, isDone } = useCountDown(launchDate);
 
   const labelStyle =
-    'text-sm text-indigo-600 uppercase tracking-[.15em] sm:tracking-[.25em]';
+    "text-sm text-indigo-600 uppercase tracking-[.15em] sm:tracking-[.25em]";
 
   const countdownClock: { label: string; value: string }[] = [
-    { label: 'Days', value: days },
-    { label: 'Hours', value: padZero(hours) },
-    { label: 'Minutes', value: padZero(minutes) },
-    { label: 'Seconds', value: padZero(seconds) },
+    { label: "Days", value: days },
+    { label: "Hours", value: padZero(hours) },
+    { label: "Minutes", value: padZero(minutes) },
+    { label: "Seconds", value: padZero(seconds) },
   ];
 
   // Check timer
@@ -38,7 +38,7 @@ export default function CountdownPanel({ selectedLaunch, onTimerDone }: Props) {
 
   // Setting messages
   useEffect(() => {
-    setFinalMessage('🐾 Calculating paw-rameters...');
+    setFinalMessage("🐾 Calculating paw-rameters...");
   }, [selectedLaunch]);
 
   useEffect(() => {
@@ -78,7 +78,10 @@ export default function CountdownPanel({ selectedLaunch, onTimerDone }: Props) {
             <span>{selectedLaunch.name}</span>
           </div>
           <div className="flex items-center gap-2">
-            <FontAwesomeIcon icon={faArrowsUpDownLeftRight} className="text-indigo-500" />
+            <FontAwesomeIcon
+              icon={faArrowsUpDownLeftRight}
+              className="text-indigo-500"
+            />
             <span>{capitalize(selectedLaunch.rocketType)}</span>
           </div>
           <div className="flex items-center gap-2">

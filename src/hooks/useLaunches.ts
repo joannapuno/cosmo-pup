@@ -1,5 +1,5 @@
 import { getLaunches } from "@/queries/get-launches"
-import { Launch } from "@/queries/types"
+import { Launch } from "@/types"
 import { useState, useEffect } from "react"
 
 export function useLaunches({

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Option } from '@/queries/types';
+import { Option } from "@/types";
 
 interface Props {
   label: string;
